@@ -14,10 +14,38 @@
 
     <script type="text/babel">
 
-let rootComponent = <h1>Hello React</h1>;
+class Timer extends React.Component {
+    constructor (){
+        super();
+        this.date = new Date();
+    }
+    render () {
+        setTimeout(function(){
+            this.setState({date: new Date(), q: Math.random()});
+            console.log('sdgsdg', this.q);
+        }.bind(this), 999)
+
+     return  <div>{this.date.toISOString()}</div>
+    }
+}
+
+class MyButton extends React.Component {
+    render () {
+     return  <div><button>Hello React</button> <button>Hello React</button></div>
+    }
+}
+
+class RootComponent extends React.Component {
+    render () {
+     return <div>
+                <h1>Hello React <MyButton/></h1>
+                <Timer/>
+        </div>
+    }
+}
 
         ReactDOM.render(
-            rootComponent,
+            <RootComponent />,
             document.getElementById("app")
         )
     </script>
