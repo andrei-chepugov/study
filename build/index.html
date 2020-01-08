@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Основы JavaScript</title>
-        <style>
-        body {
-            background: red;
-        }
-        </style>
-    </head>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add React in One Minute</title>
+  </head>
+  <body>
 
-    <body>
-        <p id="divID" ></p>
-        <!-- Напиши между тегами `script` `alert();` -->
-        <script src = '/index.js'>
+    <div id="app"></div>
 
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 
+    <script type="text/babel">
 
-        </script>
-    </body>
+let rootComponent = <h1>Hello React</h1>;
+
+        ReactDOM.render(
+            rootComponent,
+            document.getElementById("app")
+        )
+    </script>
+
+  </body>
 </html>

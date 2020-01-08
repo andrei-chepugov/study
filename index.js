@@ -10,12 +10,13 @@ app.use('/index.png', express.static('./build/index.png', options))
 app.use('/', express.static('./build/'))
 
 function qwerty (a,b,c,callback){
-let z = a+b+c;
+let z = a+b+c; 
   setTimeout(function(){
     z = z + 1000
     callback (z)  
   }, 3999)
 }
+ 
 app.get('/Time/:a/:b/:c/', function (req, res) {
   let {a,b,c} =req.params;
   qwerty (a,b,c,function(d){
@@ -59,3 +60,22 @@ function double(a){
     }
 
 }
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '654065',
+ // database : 'my_db'
+});
+
+let country = 'Argentina'
+
+connection.connect();
+ let queryString = "SELECT * FROM sakila.city where country_id = (SELECT country_id FROM sakila.country where country = ?) order by city desc limit ?, 5"
+connection.query(queryString , [country, 0], function (error, results, fields) {
+  if (error) throw error;
+  console.log('The solution is: ', results);
+});
+ 
+connection.end();
