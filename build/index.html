@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Add React in One Minute</title>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div id="app"></div>
 
@@ -14,35 +16,34 @@
 
     <script type="text/babel">
 
-class Timer extends React.Component {
-    constructor (){
-        super();
-        this.date = new Date();
-    }
-    render () {
-        setTimeout(function(){
-            this.setState({date: new Date(), q: Math.random()});
-            console.log('sdgsdg', this.q);
-        }.bind(this), 999)
+        class Timer extends React.Component {
+            constructor() {
+                super();
+                this.state = { date: new Date() };
+            }
+            render() {
+                setTimeout(function () {
+                    this.setState({ date: new Date(), q: Math.random() });
+                }.bind(this), 999)
 
-     return  <div>{this.date.toISOString()}</div>
-    }
-}
+                return <div>{this.state.date.toISOString()}</div>
+            }
+        }
 
-class MyButton extends React.Component {
-    render () {
-     return  <div><button>Hello React</button> <button>Hello React</button></div>
-    }
-}
+        class MyButton extends React.Component {
+            render() {
+                return <div><button>Hello React</button> <button>Hello React</button></div>
+            }
+        }
 
-class RootComponent extends React.Component {
-    render () {
-     return <div>
-                <h1>Hello React <MyButton/></h1>
-                <Timer/>
-        </div>
-    }
-}
+        class RootComponent extends React.Component {
+            render() {
+                return <div>
+                    <h1>Hello React <MyButton /></h1>
+                    <Timer />
+                </div>
+            }
+        }
 
         ReactDOM.render(
             <RootComponent />,
@@ -50,5 +51,6 @@ class RootComponent extends React.Component {
         )
     </script>
 
-  </body>
+</body>
+
 </html>
